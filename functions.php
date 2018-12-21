@@ -19,5 +19,5 @@
                 die ("An error are occurred, please contact an administrator.");
             }
         }
-        return $db;
+        return $db ?? null;
     }
