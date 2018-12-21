@@ -21,3 +21,18 @@
         }
         return $db ?? null;
     }
+
+    /**
+     * Test form data
+     *
+     * @param string $data
+     * @return void
+     */
+    function testData($data)
+    {
+        $data = htmlentities($data);
+        $data = htmlspecialchars($data);
+        $data = stripcslashes($data);
+        $data = trim($data);
+        return $data;
+    }

@@ -11,6 +11,7 @@
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body id="page-top" class="index">
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
@@ -19,7 +20,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="#page-top">Micro blog</a>
+                    <a class="navbar-brand" href="index.php">Micro blog</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
@@ -27,7 +28,7 @@
                             <a href="#page-top"></a>
                         </li>
                         <li class="page-scroll">
-                            <a href="#">Connexion</a>
+                            <a href="login.php">Connexion</a>
                         </li>
                     </ul>
                 </div>

@@ -29,12 +29,25 @@
                     </form>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <blockquote>
-                            <p>Lorem ipsum dolor sit <a href="#">@amet</a>, consectetur <a href="#">#adipiscing</a> elit. Integer posuere erat a ante.</p>
-                            <footer>Foo</footer>
-                        </blockquote>
-                    </div>
+                    <?php
+
+                        // Get messages from the database
+                        $req = $db->prepare("SELECT m.id, m.content, m.created_at, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id ORDER BY m.created_at DESC");
+                        $req->execute();
+                        $messages = $req->fetchAll();
+
+                        // Show messages
+                        foreach ($messages as $m) {
+                            ?>
+                                <div class="col-md-12">
+                                    <blockquote>
+                                        <p><?= $m['content'] ?></p>
+                                        <footer><?= $m['username'] ?> le <?= date('d/m/Y', $m['created_at']) ?> à <?= date('H:i', $m['created_at']) ?></footer>
+                                    </blockquote>
+                                </div>
+                            <?php
+                        }
+                    ?>
                 </div>
             </div>
         </section>
