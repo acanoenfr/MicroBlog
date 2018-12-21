@@ -13,3 +13,7 @@ composer.lock
 node_modules/
 package-lock.json
 ###< JS/JSON ignored files ###
+
+###> Other ignored files ###
+img/
+###< Other ignored files ###
