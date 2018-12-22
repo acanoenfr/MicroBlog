@@ -41,19 +41,30 @@
                 <div class="row">
                     <?php
 
+                        // Number of messages per page
                         $limitPerPage = 5;
 
+                        // Numbers of messages in the database
                         $nbMessages = $db->query("SELECT COUNT(id) as n FROM messages");
                         $nbMessages = $nbMessages->fetch()['n'];
+                        
+                        // Numbers of pages
                         $nbPages = ceil($nbMessages / $limitPerPage);
+                        
+                        // Current page (where is the user)
                         $currentPage = (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $nbPages) ? $_GET['p'] : 1;
+                        
+                        // First message of the page
                         $begin = ($currentPage - 1) * $limitPerPage;
                         
+                        // Previous page
                         $prev = $currentPage - 1;
+
+                        // Next page
                         $next = $currentPage + 1;
 
-                        // Get messages from the database
-                        $req = $db->prepare("SELECT m.id, m.content, m.created_at, m.likes, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id LIMIT $begin,$limitPerPage");
+                        // Get messages from the database (only for one page)
+                        $req = $db->prepare("SELECT m.id, m.content, m.created_at, m.likes, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id ORDER BY m.created_at DESC LIMIT $begin,$limitPerPage");
                         $req->execute();
                         $messages = $req->fetchAll();
 
@@ -72,6 +83,7 @@
                         
                         ?>
 
+                            <!-- Pagination -->
                             <nav>
                                 <ul class="pagination pagination-lg">
                                     <li class="<?= ($prev <= 1) ? 'disabled' : '' ?>"><a href="?p=<?= $prev ?>">&laquo;</a></li>
@@ -83,6 +95,7 @@
                                     <li class="<?= ($next >= $nbPages) ? 'disabled' : '' ?>"><a href="?p=<?= $next ?>">&raquo;</a></li>
                                 </ul>
                             </nav>
+                            <!-- /Pagination -->
                         
                         <?php
 
