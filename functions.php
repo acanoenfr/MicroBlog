@@ -3,9 +3,9 @@
     /**
      * Connection to database
      *
-     * @return \PDO|null
+     * @return \PDO
      */
-    function connectToDatabase()
+    function connectToDatabase(): \PDO
     {
         try {
             $db = new \PDO("mysql:host={$_ENV['host']};dbname={$_ENV['name']}", $_ENV['user'], $_ENV['pass']);
@@ -19,20 +19,36 @@
                 die ("An error are occurred, please contact an administrator.");
             }
         }
-        return $db ?? null;
+        return $db;
     }
 
     /**
      * Test form data
      *
      * @param string $data
-     * @return void
+     * @return string
      */
-    function testData($data)
+    function testData(string $data): string
     {
-        $data = htmlentities($data);
-        $data = htmlspecialchars($data);
-        $data = stripcslashes($data);
-        $data = trim($data);
-        return $data;
+        return htmlspecialchars(stripcslashes(trim($data)));
+    }
+
+    /**
+     * Check is the user is logged
+     *
+     * @return boolean
+     */
+    function isLogged(): bool
+    {
+        if (isset($_COOKIE['sid'])) {
+            $db = connectToDatabase();
+            $req = $db->prepare("SELECT * FROM users WHERE sid = :sid LIMIT 1");
+            $req->execute([
+                "sid" => $_COOKIE['sid']
+            ]);
+            if ($req->rowCount() > 0) {
+                return true;
+            }
+        }
+        return false;
     }
