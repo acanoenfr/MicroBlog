@@ -41,8 +41,19 @@
                 <div class="row">
                     <?php
 
+                        $limitPerPage = 5;
+
+                        $nbMessages = $db->query("SELECT COUNT(id) as n FROM messages");
+                        $nbMessages = $nbMessages->fetch()['n'];
+                        $nbPages = ceil($nbMessages / $limitPerPage);
+                        $currentPage = (isset($_GET['p']) && $_GET['p'] > 0 && $_GET['p'] <= $nbPages) ? $_GET['p'] : 1;
+                        $begin = ($currentPage - 1) * $limitPerPage;
+                        
+                        $prev = $currentPage - 1;
+                        $next = $currentPage + 1;
+
                         // Get messages from the database
-                        $req = $db->prepare("SELECT m.id, m.content, m.created_at, m.likes, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id ORDER BY m.created_at DESC");
+                        $req = $db->prepare("SELECT m.id, m.content, m.created_at, m.likes, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id LIMIT $begin,$limitPerPage");
                         $req->execute();
                         $messages = $req->fetchAll();
 
@@ -58,6 +69,23 @@
                                 </div>
                             <?php
                         }
+                        
+                        ?>
+
+                            <nav>
+                                <ul class="pagination pagination-lg">
+                                    <li class="<?= ($prev <= 1) ? 'disabled' : '' ?>"><a href="?p=<?= $prev ?>">&laquo;</a></li>
+                                    <?php
+                                        for ($i = 1; $i <= $nbPages; $i++) {
+                                            ?><li class="<?= ($i == $currentPage) ? 'disabled' : '' ?>"><a href="?p=<?= $i ?>"><?= $i ?></a></li><?php
+                                        }
+                                    ?>
+                                    <li class="<?= ($next >= $nbPages) ? 'disabled' : '' ?>"><a href="?p=<?= $next ?>">&raquo;</a></li>
+                                </ul>
+                            </nav>
+                        
+                        <?php
+
                     ?>
                 </div>
             </div>
