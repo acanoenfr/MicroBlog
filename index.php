@@ -26,7 +26,7 @@
                     
                     ?>
                     <?php if ($auth) { ?>
-                        <form>
+                        <form method="post" action="process/add.php">
                             <div class="col-sm-10">  
                                 <div class="form-group">
                                     <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
@@ -52,7 +52,7 @@
                                 <div class="col-md-12">
                                     <blockquote>
                                         <p><?= $m['content'] ?></p>
-                                        <footer><?= $m['username'] ?> le <?= date('d/m/Y', $m['created_at']) ?> à <?= date('H:i', $m['created_at']) ?> <?php if ($auth) { ?><a href="#">Modifier</a><?php } ?></footer>
+                                        <footer><?= $m['username'] ?> le <?= date('d/m/Y', $m['created_at']) ?> à <?= date('H:i', $m['created_at']) ?> <?php if ($auth) { ?><a href="mod.php?id=<?= $m['id'] ?>">Modifier</a> <a href="del.php?id=<?= $m['id'] ?>">Supprimer</a><?php } ?></footer>
                                     </blockquote>
                                 </div>
                             <?php
