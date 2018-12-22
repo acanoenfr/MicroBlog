@@ -52,7 +52,7 @@
                                 <div class="col-md-12">
                                     <blockquote>
                                         <p><?= $m['content'] ?></p>
-                                        <footer><?= $m['username'] ?> le <?= date('d/m/Y', $m['created_at']) ?> à <?= date('H:i', $m['created_at']) ?></footer>
+                        <footer><?= $m['username'] ?> le <?= date('d/m/Y', $m['created_at']) ?> à <?= date('H:i', $m['created_at']) ?> <?php if ($auth) { ?><a href="#">Modifier</a><?php } ?></footer>
                                     </blockquote>
                                 </div>
                             <?php
