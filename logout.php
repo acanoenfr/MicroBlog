@@ -9,3 +9,15 @@
 
             // Connect to database with PDO
             $db = connectToDatabase();
+
+            $auth = isLogged();
+
+            $sid = $_COOKIE['sid'];
+            $sidreq = $db->prepare("UPDATE users SET sid = '' WHERE sid = '$sid'");
+            $sidreq->execute();
+
+            setcookie('sid', '', time() - 1);
+
+            $_SESSION['flash'] = ["success", "Vous avez bien été déconnecté !"];
+            header('Location: index.php');
+            exit();

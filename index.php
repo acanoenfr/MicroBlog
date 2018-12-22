@@ -10,23 +10,33 @@
             // Connect to database with PDO
             $db = connectToDatabase();
 
+            $auth = isLogged();
+
             // Include the website header
             require "includes/header.inc.php";
         
         ?>
         <section>
             <div class="container">
-                <div class="row">              
-                    <form>
-                        <div class="col-sm-10">  
-                            <div class="form-group">
-                                <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
+                <div class="row">
+                    <?php
+                        
+                        // Include alert partial with $_SESSION super global
+                        require "includes/alert.inc.php";
+                    
+                    ?>
+                    <?php if ($auth) { ?>
+                        <form>
+                            <div class="col-sm-10">  
+                                <div class="form-group">
+                                    <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
-                        </div>                        
-                    </form>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
+                            </div>                        
+                        </form>
+                    <?php } ?>
                 </div>
                 <div class="row">
                     <?php

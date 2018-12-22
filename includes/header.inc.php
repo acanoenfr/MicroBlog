@@ -27,9 +27,15 @@
                         <li class="hidden">
                             <a href="#page-top"></a>
                         </li>
-                        <li class="page-scroll">
-                            <a href="login.php">Connexion</a>
-                        </li>
+                        <?php if ($auth) { ?>
+                            <li class="page-scroll">
+                                <a href="logout.php">Déconnexion</a>
+                            </li>
+                        <?php } else { ?>
+                            <li class="page-scroll">
+                                <a href="login.php">Connexion</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
