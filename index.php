@@ -42,7 +42,7 @@
                     <?php
 
                         // Get messages from the database
-                        $req = $db->prepare("SELECT m.id, m.content, m.created_at, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id ORDER BY m.created_at DESC");
+                        $req = $db->prepare("SELECT m.id, m.content, m.created_at, m.likes, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id ORDER BY m.created_at DESC");
                         $req->execute();
                         $messages = $req->fetchAll();
 
@@ -52,6 +52,7 @@
                                 <div class="col-md-12">
                                     <blockquote>
                                         <p><?= $m['content'] ?></p>
+                                        <small class="text-muted">Nombres de vote : <?= $m['likes'] ?> <a class="btn-like" href="#" data-id="<?= $m['id'] ?>">Voter</a></small>
                                         <footer><?= $m['username'] ?> le <?= date('d/m/Y', $m['created_at']) ?> à <?= date('H:i', $m['created_at']) ?> <?php if ($auth) { ?><a href="mod.php?id=<?= $m['id'] ?>">Modifier</a> <a href="del.php?id=<?= $m['id'] ?>">Supprimer</a><?php } ?></footer>
                                     </blockquote>
                                 </div>
