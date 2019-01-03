@@ -18,6 +18,13 @@
 
             $auth = isLogged();
 
+            // Detect if the user is not authenticated
+            if (!$auth) {
+                $_SESSION['flash'] = ['warning', 'Vous devez être connecté pour effectué cette action.'];
+                header('Location: index.php');
+                exit();
+            }
+
             // Include the website header
             require "includes/header.inc.php";
 
