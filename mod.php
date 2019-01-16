@@ -25,6 +25,12 @@
                 exit();
             }
 
+            $flash = null;
+            if (array_key_exists("flash", $_SESSION)) {
+                $flash = $_SESSION["flash"];
+                unset($_SESSION["flash"]);
+            }
+
             // Include the website header
             require "includes/header.inc.php";
 
@@ -32,32 +38,15 @@
             $req->execute();
 
             $message = $req->fetch();
-        
-        ?>
-        <section>
-            <div class="container">
-                <div class="row">
-                    <?php
-                        
-                        // Include alert partial with $_SESSION super global
-                        require "includes/alert.inc.php";
-                    
-                    ?>
-                    <form method="post" action="process/mod.php">
-                        <div class="col-sm-10">  
-                            <div class="form-group">
-                                <textarea id="message" name="message" class="form-control" placeholder="Message"><?= $message['content'] ?></textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <input type="hidden" name="id" value="<?= $id ?>">
-                            <button type="submit" class="btn btn-success btn-lg">Modifier</button>
-                        </div>                        
-                    </form>
-                </div>
-            </div>
-        </section>
-        <?php
+
+            require "vendor/autoload.php";
+            $smarty = new Smarty();
+            $smarty->assign([
+                "flash" => $flash,
+                "id" => $id,
+                "content" => $message['content']
+            ]);
+            $smarty->display("templates/mod.tpl");
         
             // Include the website footer
             require "includes/footer.inc.php";
