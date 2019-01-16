@@ -9,5 +9,7 @@
             "email": "contact@acanoen.fr"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "2.0"
+    }
 }
