@@ -1,0 +1,13 @@
+{
+    "name": "acanoenfr/microblog",
+    "description": "Made in LP DIM courses powered by @nilsine",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexandre Canoën",
+            "email": "contact@acanoen.fr"
+        }
+    ],
+    "require": {}
+}
