@@ -1,4 +1,6 @@
 # MicroBlog
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Facanoenfr%2Fmicroblog.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Facanoenfr%2Fmicroblog?ref=badge_shield)
+
 Made in the PHP-MYSQL module powered by @nilsine
 
 ## Getting started
@@ -55,3 +57,7 @@ return [
 
 ## Credits
 - Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/gh-pages/LICENSE) license.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Facanoenfr%2Fmicroblog.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Facanoenfr%2Fmicroblog?ref=badge_large)
