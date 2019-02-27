@@ -7,10 +7,13 @@
                                     </div>
                                 {/if}
                                 {if $auth}
-                                    <form method="post" action="process/add.php">
-                                        <div class="col-sm-10">  
+                                    <form method="post" action="process/add.php" enctype="multipart/form-data">
+                                        <div class="col-sm-10">
                                             <div class="form-group">
                                                 <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="file" name="image" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-sm-2">
@@ -23,6 +26,9 @@
                             <div class="col-md-12">
                                 {foreach from=$posts key=key item=post}
                                     <blockquote>
+                                        {if isset($post.image) && file_exists("uploads/images/{$post.image}")}
+                                            <img src="uploads/images/{$post.image}" alt="{$post.image}">
+                                        {/if}
                                         <p>{$post.content}</p>
                                         <small class="text-muted">Nombres de vote : {$post.likes} <a class="btn-like" href="#" data-id="{$post.id}">Voter</a></small>
                                         <footer>{$post.username} le {$post.created_at|date_format:"%d/%m/%Y"} à {$post.created_at|date_format:"%H:%m"} {if $auth}<a href="mod.php?id={$post.id}">Modifier</a> <a href="del.php?id={$post.id}">Supprimer</a>{/if}</footer>

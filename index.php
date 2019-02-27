@@ -44,7 +44,7 @@
             $next = $currentPage + 1;
 
             // Get messages from the database (only for one page)
-            $req = $db->prepare("SELECT m.id, m.content, m.created_at, m.likes, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id ORDER BY m.created_at DESC LIMIT $begin,$limitPerPage");
+            $req = $db->prepare("SELECT m.id, m.content, m.image, m.created_at, m.likes, u.username FROM messages as m INNER JOIN users as u ON u.id = m.user_id ORDER BY m.created_at DESC LIMIT $begin,$limitPerPage");
             $req->execute();
             $messages = $req->fetchAll();
 
