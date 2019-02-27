@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-02-27 13:51:43
+/* Smarty version 3.1.33, created on 2019-02-27 16:40:45
   from 'C:\Users\alexc\Documents\LP DIM\Cours PHP-MySQL\microblog\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c7687dfdd0fe9_08653410',
+  'unifunc' => 'content_5c76af7d3b9be4_78732786',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '57458716c7328178144377ac6ba5cd015156581b' => 
     array (
       0 => 'C:\\Users\\alexc\\Documents\\LP DIM\\Cours PHP-MySQL\\microblog\\templates\\index.tpl',
-      1 => 1551271897,
+      1 => 1551282042,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5c7687dfdd0fe9_08653410 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c76af7d3b9be4_78732786 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\Users\\alexc\\Documents\\LPDIM\\CoursPHP-MySQL\\microblog\\vendor\\smarty\\smarty\\libs\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <section>
@@ -58,7 +58,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
 ?>
                                     <blockquote>
                                         <?php if (isset($_smarty_tpl->tpl_vars['post']->value['image']) && file_exists("uploads/images/".((string)$_smarty_tpl->tpl_vars['post']->value['image']))) {?>
-                                            <img src="uploads/images/<?php echo $_smarty_tpl->tpl_vars['post']->value['image'];?>
+                                            <img class="img-thumbnail" src="vignette.php?id=<?php echo $_smarty_tpl->tpl_vars['post']->value['image'];?>
 " alt="<?php echo $_smarty_tpl->tpl_vars['post']->value['image'];?>
 ">
                                         <?php }?>

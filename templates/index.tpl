@@ -27,7 +27,7 @@
                                 {foreach from=$posts key=key item=post}
                                     <blockquote>
                                         {if isset($post.image) && file_exists("uploads/images/{$post.image}")}
-                                            <img src="uploads/images/{$post.image}" alt="{$post.image}">
+                                            <img class="img-thumbnail" src="vignette.php?id={$post.image}" alt="{$post.image}">
                                         {/if}
                                         <p>{$post.content}</p>
                                         <small class="text-muted">Nombres de vote : {$post.likes} <a class="btn-like" href="#" data-id="{$post.id}">Voter</a></small>
