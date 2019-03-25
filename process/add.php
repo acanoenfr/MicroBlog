@@ -15,6 +15,23 @@
         $content = testData($_POST['message']);
 
         if (!empty($content) && strlen($content) <= 280) {
+
+            // var_dump($_FILES); die();
+
+            if ($_FILES["image"]["type"] != "image/jpeg" && $_FILES["image"]["type"] != "image/jpg" && !isset($_FILES["image"])) {
+                $_SESSION['flash'] = ["danger", "L'image doit être au format .jpeg ou .jpg."];
+                header("Location: ../index.php");
+                exit();
+            }
+
+            if ($_FILES["image"]["name"] != "") {
+                $filename = uniqid() . "." . explode('/', $_FILES['image']['type'])[1];
+                move_uploaded_file($_FILES["image"]["tmp_name"], ROOT . "/uploads/images/$filename");
+            } else {
+                $filename = null;
+            }
+
+            // var_dump($filename); die();
             
             $req = $db->prepare("SELECT id FROM users WHERE sid = :sid LIMIT 1");
             $req->execute([
@@ -25,9 +42,10 @@
 
             $created_at = time();
 
-            $req = $db->prepare("INSERT INTO messages(content, created_at, user_id) VALUES(:content, :created_at, :user_id)");
+            $req = $db->prepare("INSERT INTO messages(content, image, created_at, user_id) VALUES(:content, :image, :created_at, :user_id)");
             $req->execute([
                 "content" => $content,
+                "image" => $filename,
                 "created_at" => $created_at,
                 "user_id" => $user['id']
             ]);

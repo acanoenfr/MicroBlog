@@ -1,5 +1,7 @@
 <?php
 
+    define("ROOT", __DIR__);
+
     // Configuration file
     return [
 

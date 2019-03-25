@@ -25,6 +25,12 @@
                 exit();
             }
 
+            $flash = null;
+            if (array_key_exists("flash", $_SESSION)) {
+                $flash = $_SESSION["flash"];
+                unset($_SESSION["flash"]);
+            }
+
             // Include the website header
             require "includes/header.inc.php";
 
@@ -32,31 +38,14 @@
             $req->execute();
 
             $message = $req->fetch();
-        
-        ?>
-        <section>
-            <div class="container">
-                <div class="row">
-                    <?php
-                        
-                        // Include alert partial with $_SESSION super global
-                        require "includes/alert.inc.php";
-                    
-                    ?>
-                    <form method="post" action="process/del.php">
-                        <div class="alert alert-warning">
-                            <span class="text-muted">Êtes-vous sûr de supprimer ce message (ID=<?= $id ?>) ?</span>
-                        </div>
-                        <div class="d-inline">
-                            <input type="hidden" name="id" value="<?= $id ?>">
-                            <a href="index.php" class="btn btn-primary btn-lg">Non, conserver</a>
-                            <button type="submit" class="btn btn-success btn-lg">Oui, supprimer</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-        <?php
+
+            require "vendor/autoload.php";
+            $smarty = new Smarty();
+            $smarty->assign([
+                "flash" => $flash,
+                "id" => $id
+            ]);
+            $smarty->display("templates/del.tpl");
         
             // Include the website footer
             require "includes/footer.inc.php";
