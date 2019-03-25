@@ -48,6 +48,15 @@
             $req->execute();
             $messages = $req->fetchAll();
 
+            for ($i = 0; $i < sizeof($messages); $i++) {
+                $messages[$i]["content"] = preg_replace_callback("#(http(s|):\/\/([a-zA-Z0-9.-]{3,60})(\/|)([a-zA-Z0-9-._\/]+|))#", function ($matches) {
+                    return "<a href='{$matches[1]}' target='_blank'>{$matches[1]}</a>";
+                }, $messages[$i]["content"]);
+                $messages[$i]["content"] = preg_replace_callback("#@([a-zA-Z0-9-_]{2,60})#", function ($matches) {
+                    return "<a href='https://twitter.com/{$matches[1]}' target='_blank'>{$matches[0]}</a>";
+                }, $messages[$i]["content"]);
+            }
+
             $previousLink = ($prev <= 1) ? 'disabled' : '';
             $nextLink = ($next >= $nbPages) ? 'disabled' : '';
 
