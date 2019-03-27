@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-02-27 16:40:45
+/* Smarty version 3.1.33, created on 2019-03-27 17:21:09
   from 'C:\Users\alexc\Documents\LP DIM\Cours PHP-MySQL\microblog\templates\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c76af7d3b9be4_78732786',
+  'unifunc' => 'content_5c9ba2f550a809_78106947',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '57458716c7328178144377ac6ba5cd015156581b' => 
     array (
       0 => 'C:\\Users\\alexc\\Documents\\LP DIM\\Cours PHP-MySQL\\microblog\\templates\\index.tpl',
-      1 => 1551282042,
+      1 => 1553703667,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5c76af7d3b9be4_78732786 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c9ba2f550a809_78106947 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\Users\\alexc\\Documents\\LPDIM\\CoursPHP-MySQL\\microblog\\vendor\\smarty\\smarty\\libs\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <section>
@@ -79,7 +79,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             </div>
-
                             <!-- Pagination -->
                             <nav>
                                 <ul class="pagination pagination-lg">
@@ -105,5 +104,15 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration === 
                             </nav>
                         </div>
                     </div>
+
+                    <div class="container text-center" id="social">
+                        <a href="https://acanoen.fr" class="sprite sw" target="_blank"></a>
+                        <a href="https://facebook.com/acanoenfr" class="sprite fb" target="_blank"></a>
+                        <a href="https://www.youtube.com/channel/UCtTpAl6y52bwdnHdRtYsshQ" class="sprite yt" target="_blank"></a>
+                        <a href="https://twitter.com/acanoenfr" class="sprite tw" target="_blank"></a>
+                        <a href="https://linkedin.com/in/acanoen" class="sprite in" target="_blank"></a>
+                        <a href="https://support.google.com/plus/answer/9217723" class="sprite gp" target="_blank"></a>
+                    </div>
+
                 </section><?php }
 }

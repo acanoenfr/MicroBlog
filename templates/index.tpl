@@ -35,7 +35,6 @@
                                     </blockquote>
                                 {/foreach}
                             </div>
-
                             <!-- Pagination -->
                             <nav>
                                 <ul class="pagination pagination-lg">
@@ -48,4 +47,14 @@
                             </nav>
                         </div>
                     </div>
+
+                    <div class="container text-center" id="social">
+                        <a href="https://acanoen.fr" class="sprite sw" target="_blank"></a>
+                        <a href="https://facebook.com/acanoenfr" class="sprite fb" target="_blank"></a>
+                        <a href="https://www.youtube.com/channel/UCtTpAl6y52bwdnHdRtYsshQ" class="sprite yt" target="_blank"></a>
+                        <a href="https://twitter.com/acanoenfr" class="sprite tw" target="_blank"></a>
+                        <a href="https://linkedin.com/in/acanoen" class="sprite in" target="_blank"></a>
+                        <a href="https://support.google.com/plus/answer/9217723" class="sprite gp" target="_blank"></a>
+                    </div>
+
                 </section>
