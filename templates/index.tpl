@@ -36,7 +36,7 @@
                                 {/foreach}
                             </div>
                             <!-- Pagination -->
-                            <nav>
+                            <nav class="container text-center">
                                 <ul class="pagination pagination-lg">
                                     <li class="{$prevLink}"><a href="?p={$prev}">&laquo;</a></li>
                                         {for $i=1 to $pages}
