@@ -15,6 +15,5 @@ package-lock.json
 ###< JS/JSON ignored files ###
 
 ###> Other ignored files ###
-img/
 uploads/images/*
 ###< Other ignored files ###
